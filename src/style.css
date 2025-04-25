@@ -1,31 +1,30 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-#container{
-    display: grid;
-    justify-content: center;
-
+#container {
+  display: grid;
+  justify-content: center;
 }
-.carousal-frame{
-    height: 400px;
-    width: 300px;
-    overflow: hidden;
-    display: grid;
+.carousal-frame {
+  height: 400px;
+  width: 300px;
+  overflow: hidden;
+  display: grid;
 }
-.carousal-grid{
-    /* margin-left: -300px; */
-    display: grid;
-    grid-template-rows: 400px;
-    grid-auto-columns: 300px;
-    grid-auto-flow: column;
+.carousal-grid {
+  /* margin-left: -300px; */
+  display: grid;
+  grid-template-rows: 400px;
+  grid-auto-columns: 300px;
+  grid-auto-flow: column;
 }
-.carousal-items{
-    padding: 5px;
+.carousal-items {
+  padding: 5px;
 }
-.carousal-items > .carousal-image{
-    max-width: 100%;
-    max-height: 100%;
+.carousal-items > .carousal-image {
+  max-width: 100%;
+  max-height: 100%;
 }
