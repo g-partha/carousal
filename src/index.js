@@ -1,45 +1,41 @@
-import "./style.css";
+// import "./style.css";
 import breadImage from "./resources/bread.jpg";
 import noodlesImage from "./resources/noodles.jpg";
 import tandooriChickenImage from "./resources/tandoori-chicken.jpg";
 
 class ImageCarousal {
-  constructor() {
-    this.carousalContainer = document.createElement("div");
-    this.carousalFrame = document.createElement("div");
-    this.carousalGrid = document.createElement("div");
-    this.carousalItems = [];
+  images = [];
+  constructor(parentNode, id) {
+    this.parentNode = parentNode;
+    this.id = id;
   }
-  appendCarousal(parentNode, id = "") {
-    this.carousalContainer.classList.add("carousal-container");
-    parentNode.appendChild(this.carousalContainer);
-    this.carousalFrame.classList.add("carousal-frame");
-    this.carousalFrame.setAttribute("id", id);
-    this.carousalContainer.appendChild(this.carousalFrame);
-    this.carousalGrid.classList.add("carousal-grid");
-    this.carousalFrame.appendChild(this.carousalGrid);
+  addImage(imageSrc) {
+    this.images.push(imageSrc);
   }
-  addItem(imageSrc) {
-    const carousalItem = document.createElement("div");
-    carousalItem.classList.add("carousal-items");
-    const image = document.createElement("img");
-    image.src = imageSrc;
-    image.classList.add("carousal-image");
-    carousalItem.appendChild(image);
-    this.carousalItems.push(carousalItem);
-    this.updateCarousal();
+  removeImage(index) {
+    this.images.splice(index, 1);
   }
-  updateCarousal() {
-    this.carousalGrid.textContent = "";
-    for (let i = 0; i < this.carousalItems.length; i++) {
-      this.carousalGrid.appendChild(this.carousalItems[i]);
-    }
+  createImageCarousal() {
+    const carousalContainer = document.createElement("div");
+    carousalContainer.classList.add("carousal-container");
+    carousalContainer.setAttribute("id", this.id);
+    this.parentNode.appendChild(carousalContainer);
+    const carousalFrame = document.createElement("div");
+    carousalFrame.classList.add("carousal-frame");
+    carousalContainer.appendChild(carousalFrame);
+    const updateImage = (imageIndex) => {
+      const image = document.createElement("img");
+      image.classList.add("carousal-image");
+      image.src = this.images[imageIndex];
+      carousalFrame.appendChild(image);
+    };
+    updateImage(0);
   }
 }
 
 const container = document.querySelector("div#container");
-const foodCarousal = new ImageCarousal();
-foodCarousal.appendCarousal(container, "food-carousal");
-foodCarousal.addItem(tandooriChickenImage);
-foodCarousal.addItem(noodlesImage);
-foodCarousal.addItem(breadImage);
+const foodImagesCarousal = new ImageCarousal(container, "food-carousal");
+foodImagesCarousal.addImage(tandooriChickenImage);
+foodImagesCarousal.addImage(noodlesImage);
+foodImagesCarousal.addImage(breadImage);
+foodImagesCarousal.createImageCarousal();
