@@ -4,27 +4,57 @@
   box-sizing: border-box;
 }
 
-#container {
+.carousal-container{
   display: grid;
+  grid-template-columns: 20px auto 20px;
+  grid-template-rows: auto 10px;
   justify-content: center;
+  justify-items: center;
+  align-items: center;
+  gap: 5px;
 }
 .carousal-frame {
   height: 400px;
   width: 300px;
   overflow: hidden;
-  display: grid;
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
 }
-.carousal-grid {
-  /* margin-left: -300px; */
-  display: grid;
-  grid-template-rows: 400px;
-  grid-auto-columns: 300px;
-  grid-auto-flow: column;
+
+.carousal-image{
+
 }
-.carousal-items {
-  padding: 5px;
+
+.next-button, .previous-button{
+  height: 20px;
+  width: 20px;
 }
-.carousal-items > .carousal-image {
-  max-width: 100%;
-  max-height: 100%;
+
+.previous-button{
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+}
+
+.next-button{
+  grid-column: 3 / 4;
+  grid-row: 1 / 2;
+}
+.navigation-dots-container{
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+  display: flex;
+  gap: 5px;
+}
+.navigation-dots{
+  height: 10px;
+  width: 10px;
+  font-size: xx-large;
+  background: none;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.highlighted-dot{
+  color: red;
 }
